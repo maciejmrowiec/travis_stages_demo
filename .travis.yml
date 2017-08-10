@@ -1,0 +1,37 @@
+language: bash
+
+sudo: required
+
+env:
+  global:
+  - genv=test123
+
+install:
+- echo "common install"
+
+script:
+- echo "common script"
+
+after_success:
+- echo "common after success"
+
+jobs:
+  include:
+  - stage: precheck
+    install:
+    - echo "install deps"
+    script:
+    - "run checks"
+  - stage: build and test
+    install:
+    - echo "install tools"
+    script: 
+    - echo "script 1"
+    - echo global $genv
+  - stage: build and test
+    script:
+    - echo "script 2"
+    - echo global $genv
+  - stage: deploy 
+    script:
+    - echo "deploy something"
