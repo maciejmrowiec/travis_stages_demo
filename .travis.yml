@@ -35,9 +35,12 @@ jobs:
     - echo "script 1"
     - echo global $genv
   - stage: build and test
+    install: skip
     script:
     - echo "script 2"
     - echo global $genv
+    after_success:
+    - echo "after success"
   - stage: deploy 
     script:
     - echo "deploy something"
