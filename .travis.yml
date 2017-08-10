@@ -1,4 +1,4 @@
-language: bash
+language: go
 
 sudo: required
 
@@ -6,8 +6,14 @@ env:
   global:
   - genv=test123
 
+before_install:
+- echo "common before install"
+
 install:
 - echo "common install"
+
+before_script:
+- echo "common before script"
 
 script:
 - echo "common script"
@@ -21,7 +27,7 @@ jobs:
     install:
     - echo "install deps"
     script:
-    - "run checks"
+    - echo "run checks"
   - stage: build and test
     install:
     - echo "install tools"
