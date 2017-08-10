@@ -27,6 +27,8 @@ jobs:
     script:
     - echo "run checks"
   - stage: build and test
+    services:
+    - mongodb
     install:
     - echo "install tools"
     script: 
